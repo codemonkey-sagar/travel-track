@@ -1,5 +1,5 @@
-import PageNav from "../components/PageNav";
-import Button from "../components/Button";
+import PageNav from "../../components/PageNav/PageNav";
+import Button from "../../components/Button/Button";
 import styles from "./Login.module.css";
 
 function Login() {
