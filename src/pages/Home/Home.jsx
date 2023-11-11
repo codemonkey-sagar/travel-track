@@ -22,7 +22,7 @@ function Home() {
             Start tracking now
           </Link>
           <Link
-            to="/app"
+            to="/demo-app"
             className="cta"
             style={{ backgroundColor: "var(--color-brand--1)" }}
           >

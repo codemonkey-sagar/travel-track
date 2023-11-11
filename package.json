@@ -8,7 +8,8 @@
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "json-server --watch data/cities.json --port 8000 --delay 500"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +25,7 @@
     "vite": "^4.5.0"
   },
   "dependencies": {
+    "json-server": "^0.17.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.18.0"
