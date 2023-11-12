@@ -1,4 +1,4 @@
-import Spinner from "../Spinner/Spinner";
+import Spinner from "../Global/Spinner/Spinner";
 import Message from "../Message/Message";
 import CityItem from "../CityItem/CityItem";
 import styles from "./CityList.module.css";

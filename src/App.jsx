@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
@@ -7,6 +7,8 @@ import AppLayout from "./pages/AppLayout/AppLayout";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import CityList from "./components/CityList/CityList";
 import CountryList from "./components/CountryList/CountryList";
+import City from "./components/City/City";
+import Form from "./components/Form/Form";
 
 const BASE_URL = "http://localhost:8000";
 
@@ -41,14 +43,12 @@ function App() {
         <Route index element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="demo-app" element={<AppLayout />}>
-          <Route
-            index
-            element={<CityList cities={visitedCities} isLoading={isLoading} />}
-          />
+          <Route index element={<Navigate replace to="visited-cities" />} />
           <Route
             path="visited-cities"
             element={<CityList cities={visitedCities} isLoading={isLoading} />}
           />
+          <Route path="visited-cities/:id" element={<City />} />
           <Route
             path="visited-countries"
             element={
@@ -75,7 +75,7 @@ function App() {
               />
             }
           />
-          <Route path="form" element={<p>Forms</p>} />
+          <Route path="form" element={<Form />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>

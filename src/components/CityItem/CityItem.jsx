@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./CityItem.module.css";
 
 const formatDate = (date) =>
@@ -10,7 +11,7 @@ const formatDate = (date) =>
 
 function CityItem({ city, color }) {
   const [isHovered, setIsHovered] = useState(false);
-  const { cityName, emoji, date } = city;
+  const { id, cityName, emoji, date, position } = city;
 
   function handleMouseOver() {
     setIsHovered(true);
@@ -25,20 +26,26 @@ function CityItem({ city, color }) {
   };
 
   return (
-    <li className={styles.cityItem} style={{ borderLeftColor: color }}>
-      <span className={styles.emoji}>{emoji}</span>
-      <h3 className={styles.name}>{cityName}</h3>
-      <time className={styles.date}>{formatDate(date)}</time>
-      <button
-        className={styles.deleteBtn}
-        style={buttonHoverStyle}
-        onMouseOver={handleMouseOver}
-        onMouseOut={handleMouseOut}
-        onFocus={handleMouseOver}
-        onBlur={handleMouseOut}
+    <li>
+      <Link
+        to={`${id}?lat=${position.lat}&lng=${position.lng}`}
+        className={styles.cityItem}
+        style={{ borderLeftColor: color }}
       >
-        &times;
-      </button>
+        <span className={styles.emoji}>{emoji}</span>
+        <h3 className={styles.name}>{cityName}</h3>
+        <time className={styles.date}>{formatDate(date)}</time>
+        <button
+          className={styles.deleteBtn}
+          style={buttonHoverStyle}
+          onMouseOver={handleMouseOver}
+          onMouseOut={handleMouseOut}
+          onFocus={handleMouseOver}
+          onBlur={handleMouseOut}
+        >
+          &times;
+        </button>
+      </Link>
     </li>
   );
 }
